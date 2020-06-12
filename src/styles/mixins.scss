@@ -1,0 +1,65 @@
+$tablet-width: 480px;
+$desktop-width: 768px;
+//$desktop-width: 1165px;
+
+@mixin tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin gridarea($area-map) {
+  grid-row-start: map-get($area-map, rowstart);
+  grid-row-end: map-get($area-map, rowend);
+  grid-column-start: map-get($area-map, colstart);
+  grid-column-end: map-get($area-map, colend);
+}
+
+@mixin title-text {
+  font: {
+    family: "Roboto", sans-serif;
+    weight: 500;
+    size: 3rem;
+  }
+}
+
+@mixin subtitle-text {
+}
+
+@mixin heading1-text {
+  font: {
+    family: "Roboto", sans-serif;
+    size: 3rem;
+    weight: 500;
+  }
+}
+
+@mixin heading2-text {
+  font: {
+    family: "Roboto", sans-serif;
+    size: 1.8rem;
+    weight: 700;
+  }
+}
+
+@mixin heading3-text {
+  font: {
+    family: "Roboto", sans-serif;
+    size: 1.2rem;
+    weight: 500;
+  }
+}
+
+@mixin body-text {
+  font: {
+    size: 1rem;
+    weight: 500;
+    family: "Open Sans", sans-serif;
+  }
+}
