@@ -1,51 +1,36 @@
 <template>
-  <div class="whoweare">
-    <!-- map -->
-    <div class="whoweare-map">
-      <div class="whoweare-map-canvas">
-        <iframe
-          width="100%"
-          height="100%"
-          id="whoweare-map-canvas"
-          src="https://maps.google.com/maps?q=Calle%20Jorge%20Juan%2051%2C%20Madrid%2028001&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          frameborder="0"
-          scrolling="no"
-          marginheight="0"
-          marginwidth="0"
-        ></iframe>
+  <common-frame id="WhoWeAre" :flipVerticalForMobile="true">
+    <!-- header -->
+    <template v-slot:left>
+      <div class="whoweare-details">
+        <page-title class="whoweare-details-title" :leftAligned="false" value="Who We Are" />
+        <div class="whoweare-details-content">
+          <p>Raices Madrid is a community of people who gather together to worship Jesus Christ and study the Bible.</p>
+          <p>We are part of the Calvary Chapel movement, that began in California in the 1960’s, which emphasizes the teaching of the Bible verse by verse.</p>
+          <p>Our church seeks to train and equip people in the Bible, to love and share community with those around us, and to reach others with the message of hope; the Gospel.</p>
+        </div>
       </div>
-    </div>
-    <!-- details -->
-    <div class="whoweare-details">
-      <page-title class="whoweare-details-title" value="Who We Are" />
-      <div class="whoweare-details-details">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Quam pellentesque nec nam aliquam sem et tortor. Id diam vel quam elementum. Praesent tristique magna sit
-          amet purus. Turpis egestas sed tempus urna et pharetra pharetra massa. Ac placerat vestibulum lectus mauris
-          ultrices. Id donec ultrices tincidunt arcu non sodales neque sodales. Fusce ut placerat orci nulla. Quam lacus
-          suspendisse faucibus interdum posuere lorem ipsum dolor sit. Aliquam sem et tortor consequat id porta.
-        </p>
-      </div>
+    </template>
 
-      <div class="whoweare-details-location">
-        <div class="whoweare-details-location-title">Location</div>
-        <div class="whoweare-details-location-details">Calle Jorge Juan 51, Madrid 28001</div>
+    <!-- details -->
+    <template v-slot:right>
+      <div class="video-container">
+        <div class="embed-container">
+          <iframe src="https://www.youtube.com/embed//ghL-WGiSG2g" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
-      <div class="whoweare-details-info">
-        <div class="whoweare-details-info-title">Information For Arriving</div>
-        <div class="whoweare-details-info-details">Metro Line 2 and 9 - stop Principe De Vergara</div>
-      </div>
-    </div>
-  </div>
+    </template>
+  </common-frame>
 </template>
 
 <script>
 import PageTitle from "@/components/Common/PageTitle";
+import CommonFrame from "@/components/Common/CommonFrame";
 export default {
   components: {
-    PageTitle
-  }
+    PageTitle,
+    CommonFrame,
+  },
 };
 </script>
 
@@ -55,98 +40,56 @@ $map-width-desktop: 400px;
 $map-width-tablet: 90vw;
 $map-width-phone: 90vw;
 .whoweare {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  padding: {
-    top: 4rem;
-    bottom: 4rem;
-  }
-  @include desktop {
-    flex-flow: row nowrap;
-    align-items: start;
-    justify-content: center;
-  }
-
-  &-map {
-    position: relative;
-    height: $map-width-phone;
-    width: $map-width-phone;
-    padding: {
-      top: 2rem;
-      bottom: 2rem;
-      left: 2rem;
-      right: 2rem;
-    }
-    @include tablet {
-      height: $map-width-tablet;
-      width: $map-width-tablet;
-    }
-    @include desktop {
-      height: $map-width-desktop;
-      width: $map-width-desktop;
-    }
-
-    &-canvas {
-      overflow: hidden;
-      background: none !important;
-      height: $map-width-phone;
-      width: $map-width-phone;
-      @include tablet {
-        height: $map-width-tablet;
-        width: $map-width-tablet;
-      }
-      @include desktop {
-        height: $map-width-desktop;
-        width: $map-width-desktop;
-      }
-    }
-  }
-
   &-details {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: start;
-    justify-content: space-between;
+    @include flex-column;
+    @include flex-centered;
     @include desktop {
+      align-items: flex-end;
+      justify-content: space-between;
       max-width: 50rem;
-    }
-
-    padding: {
-      top: 2rem;
-      bottom: 2rem;
-      left: 2rem;
-      right: 2rem;
     }
 
     &-title {
       @include heading1-text;
     }
 
-    &-details {
+    &-content {
       @include body-text;
-      margin-bottom: 2rem;
-    }
-
-    &-location {
-      &-title {
-        @include heading2-text;
+      text-align: center;
+      padding: {
+        left: 2rem;
+        right: 2rem;
       }
-      &-details {
-        @include body-text;
-      }
-      margin-bottom: 2rem;
-    }
-
-    &-info {
-      &-title {
-        @include heading2-text;
-      }
-      &-details {
-        @include body-text;
+      @include desktop {
+        text-align: right;
+        width: 25vw;
+        padding: 0;
+        text-align: right;
       }
     }
   }
+}
+.video-container {
+  margin-bottom:1rem;
+  @include desktop {
+    width: 40vw;
+    margin-bottom:0;
+  }
+}
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>

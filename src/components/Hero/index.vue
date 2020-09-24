@@ -2,9 +2,8 @@
   <div class="hero">
     <navbar class="hero-navbar" />
     <div class="hero-mission-statement-wrapper">
-      <img class="hero-mission-statement-img" src="@/assets/RaicesLogo.png" />
+      <span class="hero-mission-statement-type">raices madrid</span>
     </div>
-    <down-arrow class="hero-next-arrow" />
   </div>
 </template>
 
@@ -25,14 +24,14 @@ export default {
 
 .hero {
   width: 100vw;
-  height: 100vh;
+  height: 62vh;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../../assets/madrid.jpeg") no-repeat center center;
+  justify-content: start;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),
+    url("../../assets/hero_image.jpg") no-repeat center center;
   background-size: cover;
   // not working on mobile :(
   // background-attachment: initial;
@@ -47,20 +46,17 @@ export default {
   &-mission-statement {
     &-wrapper {
       overflow: hidden;
-    }
-
-    flex: auto;
-    display: flex;
-    flex-flow: column nowrap;
-    align-content: center;
-    justify-content: center;
-
-    color: white;
-    @include title-text;
-    text-align: center;
-    &-img {
-      width: 45vw;
-      height: auto;
+      flex-grow: 1;
+      display: flex;
+      flex-flow: column nowrap;
+      align-content: center;
+      justify-content: center;
+    }    
+    
+    &-type {
+      @include title-text;
+      text-align: center;
+      color: white;
     }
   }
 

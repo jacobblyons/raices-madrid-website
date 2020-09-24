@@ -1,7 +1,19 @@
+/*
+  Variables
+*/
 $tablet-width: 480px;
 $desktop-width: 768px;
 //$desktop-width: 1165px;
 
+$mobile-vertical-spacing: 5rem;
+$vertical-spacing: 7rem;
+$left-of-center-size:40%;
+$right-of-center-size:60%;
+$half-center-spacing: 3rem;
+
+/*
+  Responsiveness
+*/
 @mixin tablet {
   @media (min-width: $tablet-width) {
     @content;
@@ -14,6 +26,11 @@ $desktop-width: 768px;
   }
 }
 
+
+
+/*
+  layout helpers
+*/
 @mixin gridarea($area-map) {
   grid-row-start: map-get($area-map, rowstart);
   grid-row-end: map-get($area-map, rowend);
@@ -21,11 +38,69 @@ $desktop-width: 768px;
   grid-column-end: map-get($area-map, colend);
 }
 
-@mixin title-text {
+@mixin flex-column {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+@mixin flex-centered {
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-right-centered {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+@mixin flex-left-centered {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
+
+
+/*
+  Typography
+*/
+@mixin font($font-family, $font-file) {
+  @font-face {
+    font-family: $font-family;
+    src: url($font-file) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+@mixin navbar-text {
   font: {
     family: "Roboto", sans-serif;
-    weight: 500;
-    size: 3rem;
+    size: 1rem;
+    weight: 200;
+  }
+}
+
+@mixin title-text {
+  font: {
+    family: "cocogoose-semilight", sans-serif;
+    size: 3rem; 
+  }
+  @include desktop(){
+    font: {
+      family: "cocogoose-semilight", sans-serif;
+      size: 4rem; 
+    }
+
   }
 }
 
@@ -43,7 +118,7 @@ $desktop-width: 768px;
 @mixin heading2-text {
   font: {
     family: "Roboto", sans-serif;
-    size: 1.8rem;
+    size: 1.2rem;
     weight: 700;
   }
 }
@@ -51,8 +126,8 @@ $desktop-width: 768px;
 @mixin heading3-text {
   font: {
     family: "Roboto", sans-serif;
-    size: 1.2rem;
-    weight: 500;
+    size: 1rem;
+    weight: 300;
   }
 }
 

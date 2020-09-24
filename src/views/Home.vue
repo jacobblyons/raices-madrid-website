@@ -1,10 +1,11 @@
 <template>
   <div class="home">
     <hero />
-    <banners />
     <gatherings />
-    <filler />
+    <mission-statement />
     <who-we-are />
+    <location />
+    <our-team />
     <app-footer />
   </div>
 </template>
@@ -17,6 +18,9 @@ import Filler from "@/components/Filler";
 import WhoWeAre from "@/components/WhoWeAre";
 import AppFooter from "@/components/Footer";
 import Banners from "@/components/Banners";
+import MissionStatement from "@/components/MissionStatement";
+import Location from "@/components/Location";
+import OurTeam from "@/components/OurTeam";
 
 export default {
   name: "Home",
@@ -26,7 +30,10 @@ export default {
     Filler,
     WhoWeAre,
     AppFooter,
-    Banners
+    Banners,
+    MissionStatement,
+    Location,
+    OurTeam
   }
 };
 </script>
